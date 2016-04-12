@@ -1,0 +1,1336 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY ontology "http://dbpedia.org/ontology/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY pt "http://dbpedia.org/property/pt/" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY semanticUI "http://purl.org/biodiv/semanticUI#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://&semanticUI;"
+     xml:base="http://http://purl.org/biodiv/semanticUI"
+     xmlns:pt="http://dbpedia.org/property/pt/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:semanticUI="http://purl.org/biodiv/semanticUI#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontology="http://dbpedia.org/ontology/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://purl.org/biodiv/semanticUI#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#features -->
+
+    <owl:AnnotationProperty rdf:about="&semanticUI;features"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="&terms;description">
+        <rdfs:label xml:lang="en">description</rdfs:label>
+        <rdfs:label xml:lang="pt">descrição</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="&terms;title">
+        <rdfs:label xml:lang="en">title</rdfs:label>
+        <rdfs:label xml:lang="pt">título</rdfs:label>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral -->
+
+    <rdfs:Datatype rdf:about="&rdf;PlainLiteral"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#Literal -->
+
+    <rdfs:Datatype rdf:about="&rdfs;Literal"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#boolean -->
+
+    <rdfs:Datatype rdf:about="&xsd;boolean"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#dateTime -->
+
+    <rdfs:Datatype rdf:about="&xsd;dateTime"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#double -->
+
+    <rdfs:Datatype rdf:about="&xsd;double"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#integer -->
+
+    <rdfs:Datatype rdf:about="&xsd;integer"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#string -->
+
+    <rdfs:Datatype rdf:about="&xsd;string"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#real -->
+
+    <rdfs:Datatype rdf:about="&owl;real"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/hasPart -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasPart">
+        <rdfs:label xml:lang="en">has part</rdfs:label>
+        <rdfs:label xml:lang="pt">tem parte</rdfs:label>
+        <owl:inverseOf rdf:resource="&ontology;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isPartOf">
+        <rdfs:label xml:lang="en">part of</rdfs:label>
+        <rdfs:label xml:lang="pt">parte de</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/state -->
+
+    <owl:ObjectProperty rdf:about="&ontology;state">
+        <rdfs:label xml:lang="en">state</rdfs:label>
+        <rdfs:label xml:lang="pt">estado</rdfs:label>
+        <rdfs:range rdf:resource="&ontology;State"/>
+        <rdfs:subPropertyOf rdf:resource="&ontology;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#hasRole -->
+
+    <owl:ObjectProperty rdf:about="&semanticUI;hasRole">
+        <rdfs:label xml:lang="en">has role</rdfs:label>
+        <rdfs:label xml:lang="pt">tem perfil</rdfs:label>
+        <rdfs:range rdf:resource="&semanticUI;Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#hasWeight -->
+
+    <owl:ObjectProperty rdf:about="&semanticUI;hasWeight">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">has weight</rdfs:label>
+        <rdfs:label xml:lang="pt">tem peso</rdfs:label>
+        <rdfs:range rdf:resource="&semanticUI;Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#value -->
+
+    <owl:ObjectProperty rdf:about="&semanticUI;value">
+        <rdfs:label xml:lang="en">value</rdfs:label>
+        <rdfs:label xml:lang="pt">valor</rdfs:label>
+        <rdfs:range rdf:resource="&semanticUI;Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/property/pt/mapa -->
+
+    <owl:DatatypeProperty rdf:about="&pt;mapa">
+        <rdfs:label xml:lang="en">has map</rdfs:label>
+        <rdfs:label xml:lang="pt">tem mapa</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#hasDataValue -->
+
+    <owl:DatatypeProperty rdf:about="&semanticUI;hasDataValue">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">has data value</rdfs:label>
+        <rdfs:label xml:lang="pt">tem valor do dado</rdfs:label>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#hasPassword -->
+
+    <owl:DatatypeProperty rdf:about="&semanticUI;hasPassword">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">has password</rdfs:label>
+        <rdfs:label xml:lang="en">tem senha</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#hasUserName -->
+
+    <owl:DatatypeProperty rdf:about="&semanticUI;hasUserName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">has username</rdfs:label>
+        <rdfs:label xml:lang="pt">tem nome de usuário</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/AdministrativeRegion -->
+
+    <owl:Class rdf:about="&ontology;AdministrativeRegion">
+        <rdfs:label xml:lang="en">Administrative region</rdfs:label>
+        <rdfs:label xml:lang="pt">Região administrativa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/City -->
+
+    <owl:Class rdf:about="&ontology;City">
+        <rdfs:label xml:lang="en">City</rdfs:label>
+        <rdfs:label xml:lang="pt">Cidade</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Settlement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Country -->
+
+    <owl:Class rdf:about="&ontology;Country">
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:label xml:lang="pt">País</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;PopulatedPlace"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/GovernmentalAdministrativeRegion -->
+
+    <owl:Class rdf:about="&ontology;GovernmentalAdministrativeRegion">
+        <rdfs:label xml:lang="en">Governmental administrative region</rdfs:label>
+        <rdfs:label xml:lang="pt">Região administrativa governamental</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;AdministrativeRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Municipality -->
+
+    <owl:Class rdf:about="&ontology;Municipality">
+        <rdfs:label xml:lang="en">Municipality</rdfs:label>
+        <rdfs:label xml:lang="pt">Município</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GovernmentalAdministrativeRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Place -->
+
+    <owl:Class rdf:about="&ontology;Place">
+        <rdfs:label xml:lang="en">Place</rdfs:label>
+        <rdfs:label xml:lang="pt">Lugar</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/PopulatedPlace -->
+
+    <owl:Class rdf:about="&ontology;PopulatedPlace">
+        <rdfs:label xml:lang="en">Populated place</rdfs:label>
+        <rdfs:label xml:lang="pt">Lugar povoado</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Region -->
+
+    <owl:Class rdf:about="&ontology;Region">
+        <rdfs:label xml:lang="en">Region</rdfs:label>
+        <rdfs:label xml:lang="pt">Região</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;PopulatedPlace"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Settlement -->
+
+    <owl:Class rdf:about="&ontology;Settlement">
+        <rdfs:label xml:lang="en">Settlement</rdfs:label>
+        <rdfs:label xml:lang="pt">Asentamiento</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;PopulatedPlace"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/State -->
+
+    <owl:Class rdf:about="&ontology;State">
+        <rdfs:label xml:lang="en">State</rdfs:label>
+        <rdfs:label xml:lang="pt">Estado</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;PopulatedPlace"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/page/Mesoregion_(Brazil) -->
+
+    <owl:Class rdf:about="http://dbpedia.org/page/Mesoregion_(Brazil)">
+        <rdfs:label xml:lang="en">Mesoregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Meso região</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GovernmentalAdministrativeRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/page/Microregion_(Brazil) -->
+
+    <owl:Class rdf:about="http://dbpedia.org/page/Microregion_(Brazil)">
+        <rdfs:label xml:lang="en">Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microregião</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GovernmentalAdministrativeRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Analysis -->
+
+    <owl:Class rdf:about="&semanticUI;Analysis">
+        <rdfs:label xml:lang="en">Analysis</rdfs:label>
+        <rdfs:label xml:lang="pt">Análise</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Boolean -->
+
+    <owl:Class rdf:about="&semanticUI;Boolean">
+        <rdfs:label xml:lang="en">Boolean</rdfs:label>
+        <rdfs:label xml:lang="pt">Boleana</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&semanticUI;Categorical"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Categorical -->
+
+    <owl:Class rdf:about="&semanticUI;Categorical">
+        <rdfs:label xml:lang="en">Categorical</rdfs:label>
+        <rdfs:label xml:lang="pt">Categórico</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&semanticUI;Value"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#EvaluationObject -->
+
+    <owl:Class rdf:about="&semanticUI;EvaluationObject">
+        <rdfs:label xml:lang="en">Evaluation object</rdfs:label>
+        <rdfs:label xml:lang="pt">Objeto de avaliação</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Feature -->
+
+    <owl:Class rdf:about="&semanticUI;Feature">
+        <rdfs:label xml:lang="en">Feature</rdfs:label>
+        <rdfs:label xml:lang="pt">Característica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Integer -->
+
+    <owl:Class rdf:about="&semanticUI;Integer">
+        <rdfs:label xml:lang="en">Integer</rdfs:label>
+        <rdfs:label xml:lang="pt">Inteiro</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&semanticUI;hasDataValue"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&semanticUI;Real"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Real -->
+
+    <owl:Class rdf:about="&semanticUI;Real">
+        <rdfs:label xml:lang="en">Real</rdfs:label>
+        <rdfs:label xml:lang="pt">Real</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&semanticUI;Value"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Role -->
+
+    <owl:Class rdf:about="&semanticUI;Role">
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+        <rdfs:label xml:lang="pt">Perfil</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Scenario -->
+
+    <owl:Class rdf:about="&semanticUI;Scenario">
+        <rdfs:label xml:lang="en">Scenario</rdfs:label>
+        <rdfs:label xml:lang="pt">Cenário</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#User -->
+
+    <owl:Class rdf:about="&semanticUI;User">
+        <rdfs:label xml:lang="en">User</rdfs:label>
+        <rdfs:label xml:lang="pt">Usuário</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Value -->
+
+    <owl:Class rdf:about="&semanticUI;Value">
+        <rdfs:label xml:lang="en">Value</rdfs:label>
+        <rdfs:label xml:lang="pt">Valor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#Weighted -->
+
+    <owl:Class rdf:about="&semanticUI;Weighted">
+        <rdfs:label xml:lang="en">Weighted</rdfs:label>
+        <rdfs:label xml:lang="pt">Ponderado</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&semanticUI;hasWeight"/>
+                <owl:someValuesFrom rdf:resource="&semanticUI;Value"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&semanticUI;Feature"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Brasil -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Brasil">
+        <rdf:type rdf:resource="&ontology;Country"/>
+        <rdfs:comment xml:lang="en">Brazil</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Brasil</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Adamantina -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Adamantina">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Adamantina Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Adamantina</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/db/SaoPaulo_Micro_Adamantina.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Amparo -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Amparo">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Amparo Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microregião de Amparo</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/df/SaoPaulo_Micro_Amparo.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Andradina -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Andradina">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Andradina Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Andradina</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/6/65/SaoPaulo_Micro_Andradina.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Araraquara -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Araraquara">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Araraquara Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Araraquara</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/d1/SaoPaulo_Micro_Araraquara.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Araçatuba -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Araçatuba">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Araçatuba Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Araçatuba</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/4/46/SaoPaulo_Micro_Aracatuba.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Assis -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Assis">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Assis Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Assis</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/4/46/SaoPaulo_Micro_Assis.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Auriflama -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Auriflama">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Auriflama Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Auriflama</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/4/42/SaoPaulo_Micro_Auriflama.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Avaré -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Avaré">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Avaré Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Avaré</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/6/62/SaoPaulo_Micro_Avare.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Bananal -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Bananal">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Bananal Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Bananal</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/8/83/SaoPaulo_Micro_Bananal.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Barretos -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Barretos">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Barretos Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Barretos</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/e/e0/SaoPaulo_Micro_Barretos.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Batatais -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Batatais">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Batatais Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Batatais</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/2/2d/SaoPaulo_Micro_Batatais.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Bauru -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Bauru">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Bauru Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Bauru</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/d4/SaoPaulo_Micro_Bauru.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Birigüi -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Birigüi">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Birigüi Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Birigüi</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/b/be/SaoPaulo_Micro_Birigui.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Botucatu -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Botucatu">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Botucatu Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Botucatu</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/5/56/SaoPaulo_Micro_Botucatu.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Bragança_Paulista -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Bragança_Paulista">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Bragança Paulista Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Bragança Paulista</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/0/0f/SaoPaulo_Micro_BragancaPaulista.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Campinas -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Campinas">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Campinas Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Campinas</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/9/9f/SaoPaulo_Micro_Campinas.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Campos_do_Jordão -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Campos_do_Jordão">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Campos do Jordão Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Campos do Jordão</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/a/a6/SaoPaulo_Micro_CamposdoJordao.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Capão_Bonito -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Capão_Bonito">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Capão Bonito Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Capão Bonito</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/9/96/SaoPaulo_Micro_CampaoBonito.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Caraguatatuba -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Caraguatatuba">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Caraguatatuba Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Caraguatatuba</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/a/a9/SaoPaulo_Micro_Caraguatatuba.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Catanduva -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Catanduva">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Catanduva Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Catanduva</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/2/22/SaoPaulo_Micro_Catanduva.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Dracena -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Dracena">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Dracena Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Dracena</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/4/42/SaoPaulo_Micro_Dracena.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Fernandópolis -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Fernandópolis">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Fernandópolis Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Fernandópolis</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/4/4f/SaoPaulo_Micro_Fernandopolis.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Franca -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Franca">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Franca Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Franca</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/3/36/SaoPaulo_Micro_Franca.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Franco_da_Rocha -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Franco_da_Rocha">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Franco da Rocha Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Franco da Rocha</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/0/05/SaoPaulo_Micro_FrancodaRocha.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Guaratinguetá -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Guaratinguetá">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Guaratinguetá Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Guaratinguetá</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/b/bc/SaoPaulo_Micro_Guaratingueta.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Guarulhos -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Guarulhos">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Guarulhos Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Guarulhos</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/a/a2/SaoPaulo_Micro_Guarulhos.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Itanhaém -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Itanhaém">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Itanhaém Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Itanhaém</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/7/7b/SaoPaulo_Micro_Itanhaem.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Itapecerica_da_Serra -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Itapecerica_da_Serra">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Itapecerica da Serra Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Itapecerica da Serra</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/f/ff/SaoPaulo_Micro_ItapecericadaSerra.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Itapetininga -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Itapetininga">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Itapetininga Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Itapetininga</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/2/25/SaoPaulo_Micro_Itapetininga.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Itapeva -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Itapeva">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Itapeva Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Itapeva</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/9/9e/SaoPaulo_Micro_Itapeva.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Ituverava -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Ituverava">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Ituverava Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Ituverava</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/7/73/SaoPaulo_Micro_Ituverava.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Jaboticabal -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Jaboticabal">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Jaboticabal Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Jaboticabal</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/e/e3/SaoPaulo_Micro_Jaboticabal.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Jales -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Jales">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Jales Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Jales</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/2/2b/SaoPaulo_Micro_Jales.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Jaú -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Jaú">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Jaú Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Jaú</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/5/56/SaoPaulo_Micro_Jau.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Jundiaí -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Jundiaí">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Jundiaí Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Jundiaí</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/e/ec/SaoPaulo_Micro_Jundiai.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Limeira -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Limeira">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Limeira Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Limeira</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/7/75/SaoPaulo_Micro_Limeira.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Lins -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Lins">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Lins Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Lins</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/e/e6/SaoPaulo_Micro_Lins.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Marília -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Marília">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Marília Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Marília</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/b/b0/SaoPaulo_Micro_Marilia.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Mogi_das_Cruzes -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Mogi_das_Cruzes">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Mogi das Cruzes Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Mogi das Cruzes</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/6/61/SaoPaulo_Micro_MogidasCruzes.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Moji_Mirim -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Moji_Mirim">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Mogi Mirim Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Mogi Mirim</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/e/eb/SaoPaulo_Micro_MojiMirim.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Nhandeara -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Nhandeara">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Nhandeara Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Nhandeara</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/5/5b/SaoPaulo_Micro_Nhandeara.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Novo_Horizonte -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Novo_Horizonte">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Novo Horizonte Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Novo Horizonte</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/df/SaoPaulo_Micro_NovoHorizonte.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Osasco -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Osasco">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Osasco Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Osasco</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/3/3d/SaoPaulo_Micro_Osasco.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Ourinhos -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Ourinhos">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Ourinhos Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Ourinhos</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/8/8b/SaoPaulo_Micro_Ourinhos.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Paraibuna_e_Paraitinga -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Paraibuna_e_Paraitinga">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Paraibuna/Paraitinga Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Paraibuna/Paraitinga</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/1/1f/SaoPaulo_Micro_ParaibunaParaitinga.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Paulínia -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Paulínia">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Paulínia Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Paulínia</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/9/90/SaoPaulo_Micro_Paulinia.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Piedade -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Piedade">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Piedade Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Piedade</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/a/a7/SaoPaulo_Micro_Piedade.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Piracicaba -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Piracicaba">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Piracicaba Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Piracicaba</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/8/80/SaoPaulo_Micro_Piracicaba.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Pirassununga -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Pirassununga">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Pirassununga Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Pirassununga</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/d1/SaoPaulo_Micro_Pirassununga.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Registro -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Registro">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Registro Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Registro</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/5/50/SaoPaulo_Micro_Registro.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Ribeirão_Preto -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Ribeirão_Preto">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Ribeirão Preto Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Ribeirão Preto</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/dd/SaoPaulo_Micro_RibeiraoPreto.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Rio_Claro -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Rio_Claro">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Rio Claro Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Rio Claro</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/d/dd/SaoPaulo_Micro_RioClaro.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Santos -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Santos">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Santos Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Santos</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/f/f8/SaoPaulo_Micro_Santos.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Sorocaba -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Sorocaba">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Sorocaba Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Sorocaba</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/2/26/SaoPaulo_Micro_Sorocaba.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_São_Carlos -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_São_Carlos">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">São Carlos Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de São Carlos</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/e/ef/SaoPaulo_Micro_SaoCarlos.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_São_Joaquim_da_Barra -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_São_Joaquim_da_Barra">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">São Joaquim da Barra Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de São Joaquim da Barra</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/6/65/SaoPaulo_Micro_SaoJoaquimdaBarra.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_São_José_do_Rio_Preto -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_São_José_do_Rio_Preto">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">São José do Rio Preto Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de São José do Rio Preto</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/6/68/SaoPaulo_Micro_SaoJosedoRioPreto.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_São_José_dos_Campos -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_São_José_dos_Campos">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">São José dos Campos Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de São José dos Campos</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/a/ac/SaoPaulo_Micro_SaoJosedosCampos.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_São_João_da_Boa_Vista -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_São_João_da_Boa_Vista">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">São João da Boa Vista Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de São João da Boa Vista</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/2/26/SaoPaulo_Micro_SaoJoaodaBoaVista.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_São_Paulo -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_São_Paulo">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">São Paulo Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de São Paulo</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/3/37/SaoPaulo_Micro_SaoPaulo.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Tatuí -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Tatuí">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Tatuí Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Tatuí</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/0/0c/SaoPaulo_Micro_Tatui.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Tupã -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Tupã">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Tupã Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Tupã</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/b/ba/SaoPaulo_Micro_Tupa.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/Microrregião_de_Votuporanga -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/Microrregião_de_Votuporanga">
+        <rdf:type rdf:resource="http://dbpedia.org/page/Microregion_(Brazil)"/>
+        <rdfs:label xml:lang="en">Votuporanga Microregion</rdfs:label>
+        <rdfs:label xml:lang="pt">Microrregião de Votuporanga</rdfs:label>
+        <pt:mapa rdf:datatype="&xsd;anyURI">https://upload.wikimedia.org/wikipedia/commons/7/78/SaoPaulo_Micro_Votuporanga.svg</pt:mapa>
+        <ontology:state rdf:resource="http://pt.dbpedia.org/resource/São_Paulo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pt.dbpedia.org/resource/São_Paulo -->
+
+    <owl:NamedIndividual rdf:about="http://pt.dbpedia.org/resource/São_Paulo">
+        <rdf:type rdf:resource="&ontology;State"/>
+        <rdfs:label>São Paulo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#False -->
+
+    <owl:NamedIndividual rdf:about="&semanticUI;False">
+        <rdf:type rdf:resource="&semanticUI;Boolean"/>
+        <rdfs:label xml:lang="en">False</rdfs:label>
+        <rdfs:label xml:lang="pt">Falso</rdfs:label>
+        <semanticUI:hasDataValue rdf:datatype="&xsd;double">-1.0</semanticUI:hasDataValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/biodiv/semanticUI#True -->
+
+    <owl:NamedIndividual rdf:about="&semanticUI;True">
+        <rdf:type rdf:resource="&semanticUI;Boolean"/>
+        <rdfs:label xml:lang="en">True</rdfs:label>
+        <rdfs:label xml:lang="pt">Verdadeiro</rdfs:label>
+        <semanticUI:hasDataValue rdf:datatype="&xsd;double">1.0</semanticUI:hasDataValue>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

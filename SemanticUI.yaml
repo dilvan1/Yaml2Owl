@@ -1,0 +1,257 @@
+prefix:
+  dc: http://purl.org/dc/elements/1.1/
+  pt: http://dbpedia.org/property/pt/
+  terms: http://purl.org/dc/terms/
+  dbp: http://dbpedia.org/ontology/
+
+ontology: http://purl.org/biodiv/semanticUI#
+
+map:
+  creator: dc:creator
+  description: terms:description
+  title: terms:title
+  state: dbp:state
+  isPartOf: dbp:isPartOf
+  hasPart: dbp:hasPart
+  mapa: pt:mapa
+  State: dbp:State
+  Settlement: dbp:Settlement
+  PopulatedPlace: dbp:PopulatedPlace
+  Place: dbp:Place
+  Municipality: dbp:Municipality
+  GovernmentalAdministrativeRegion: dbp:GovernmentalAdministrativeRegion
+  Region: dbp:Region
+  AdministrativeRegion: dbp:AdministrativeRegion
+  Mesoregion: http://dbpedia.org/page/Mesoregion_(Brazil)
+  City: dbp:City
+  Settlement: dbp:Settlement
+  Microregion: http://dbpedia.org/page/Microregion_(Brazil)
+  Country: dbp:Country
+  Brasil: http://pt.dbpedia.org/resource/Brasil
+
+addFrom:
+  - endpoint: http://pt.dbpedia.org/sparql
+    query: |
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      prefix dbp: <http://dbpedia.org/ontology/>
+      prefix dbp-pt: <http://pt.dbpedia.org/property/>
+      prefix dbr-pt: <http://pt.dbpedia.org/resource/Categoria:>
+      prefix dbc-pt: <http://pt.dbpedia.org/resource/Predefinição:Info/>
+      prefix dbrec-pt: <http://pt.dbpedia.org/resource/>
+      select distinct * where {
+      ?uri2 dbp-pt:mesorregião ?uri1;
+            rdfs:label ?label2;
+            dbp-pt:mapa ?mapa;
+            dbp-pt:wikiPageUsesTemplate dbc-pt:Microrregião;
+            dbp:state ?state.
+      ?uri1 dbp-pt:wikiPageUsesTemplate dbc-pt:Mesorregião;
+            rdfs:label ?label1.
+      ?state rdfs:label ?label3.
+      # To restrict to the south:
+      filter (?state = dbrec-pt:São_Paulo || ?state = dbrec-pt:Paraná ||
+              ?state = dbrec-pt:Santa_Catarina || ?state = dbrec-pt:Rio_Grande_do_Sul)
+      }
+    template: |
+      ?state type State
+      ?state label ?label3
+      ?state isPartOf Brazil
+      ?uri1 type Mesoregion
+      ?uri1 label ?label1
+      ?uri1 state ?state
+      ?uri2 type Microregion
+      ?uri2 label ?label2
+      ?uri2 isPartOf ?uri1
+      ?uri2 state ?state
+      ?uri2 mapa ?mapa
+
+creator:
+  subPropertyOf: AnnotationProperty
+  label: [creator @en, criador @pt]
+
+description:
+  subPropertyOf: AnnotationProperty
+  label: [description @en, descrição @pt]
+
+#AnnotationProperty: features
+
+label:
+  subPropertyOf: AnnotationProperty
+  label: [label @en, nome @pt]
+
+title:
+  subPropertyOf: AnnotationProperty
+  label: [título @pt, title @en]
+  range: rdfs:Literal
+
+value:
+  subPropertyOf: ObjectProperty
+  label: [valor @pt, value @en]
+  functional: true
+  range: Value
+
+isPartOf:
+  subPropertyOf: ObjectProperty
+  label: [parte de @pt, part of @en]
+
+state:
+  subPropertyOf: isPartOf
+  label: [estado @pt, state @en]
+  range: State
+
+hasRole:
+  subPropertyOf: ObjectProperty
+  label: [has role @en, tem perfil @pt]
+  range: Role
+
+hasPart:
+  subPropertyOf: ObjectProperty
+  label: [tem parte @pt, has part @en]
+  inverseOf: isPartOf
+
+hasWeight:
+  subPropertyOf: ObjectProperty
+  label: [has weight @en, tem peso @pt]
+  functional: true
+  range: Value
+
+hasUserName:
+  subPropertyOf: ObjectProperty
+  label: [tem nome de usuário @pt, has username @en]
+  functional: true
+
+mapa:
+  subPropertyOf: DataProperty
+  label: [has map @en, tem mapa @pt]
+  range: uri
+
+hasPassword:
+  subPropertyOf: DataProperty
+  label: [has password @en, tem senha @en]
+  functional: true
+
+hasDataValue:
+  subPropertyOf: DataProperty
+  label: [tem valor do dado @pt, has data value @en]
+  functional: true
+  range: Literal
+
+asNumber:
+  subPropertyOf: hasDataValue
+  label: [valor numérico @pt, as number @en]
+  functional: true
+  domain: Categorical
+  #range: real
+
+
+#
+# Classes
+#
+
+Value:
+  label: [Value @en, Valor @pt]
+
+Settlement:
+  is_a: PopulatedPlace
+  label: [Assentamento @pt, Settlement @en]
+
+PopulatedPlace:
+  is_a: Place
+  label: [Lugar povoado @pt, Populated place @en]
+
+Role:
+  label: [Role @en, Perfil @pt]
+
+Analysis:
+  label: [Análise @pt, Analysis @en]
+
+Municipality:
+  is_a: GovernmentalAdministrativeRegion
+  label: [Município @pt, Municipality @en]
+
+Weighted:
+  is_a: Feature
+  label: [Weighted @en, Ponderado @pt]
+  hasWeight: Value
+
+User:
+  label: [User @en, Usuário @pt]
+
+State:
+  is_a: PopulatedPlace
+  label: [State @en, Estado @pt]
+
+Real:
+  is_a: Value
+  label: [Real @pt, Real @en]
+
+Boolean:
+  is_a: Categorical
+  label: [Boleana @pt, Boolean @en]
+
+Integer:
+  is_a: Real
+  label: [Inteiro @pt, Integer @en]
+  hasDataValue: integer
+
+AdministrativeRegion:
+  is_a: Region
+  label: [Administrative region @en, Região administrativa @pt]
+
+Mesoregion:
+  is_a: GovernmentalAdministrativeRegion
+  label: [Meso região @pt, Mesoregion @en]
+
+Categorical:
+  is_a: Value
+  label: [Categórico @pt, Categorical @en]
+
+City:
+  is_a: Settlement
+  label: [City @en, Cidade @pt]
+
+Region:
+  label: [Região @pt, Region @en]
+  is_a: PopulatedPlace
+
+Microregion:
+  is_a: GovernmentalAdministrativeRegion
+  label: [Microregião @pt, Microregion @en]
+
+Scenario:
+  label: [Scenario @en, Cenário @pt]
+
+Feature:
+  label: [Característica @pt, Feature @en]
+
+EvaluationObject:
+  label: [Evaluation object @en, Objeto de avaliação @pt]
+
+Country:
+  is_a: PopulatedPlace
+  label: [País @pt, Country @en]
+
+GovernmentalAdministrativeRegion:
+  is_a: AdministrativeRegion
+  label: [Região administrativa governamental @pt,
+          Governmental administrative region @en]
+
+Place:
+  label: [Place @en, Lugar @pt]
+
+#
+# Individuals
+#
+
+TrueVal:
+  type: Boolean
+  label: [Verdadeiro @pt, True @en]
+  hasDataValue: 1.0
+
+FalseVal:
+  type: Boolean
+  label: [False @en, Falso @pt]
+  hasDataValue: -1.0
+
+Brazil:
+  type: Country
+  label: [Brazil @en, Brasil @pt]

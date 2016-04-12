@@ -1,0 +1,1459 @@
+#
+# Esse arquivo está no formato yaml, nele você tem chaves com valores
+# associados:
+# label: description
+# a string description fica associada a chave label
+# Quando se quer uma lista de coisas, o - é usado:
+# cidades:
+#   - New York
+#   - San Franciso
+#   - São Paulo
+
+
+# Nome (URL) que define a sua ontologia
+ontology: http://semantic.icmc.usp.br/sustenagro#
+
+# As ontologias que você inclui. No nosso caso vai ser sempre uma
+includes:
+  - SemanticUI.yaml
+
+#imports:
+#  - prefix: ui
+#    file: SemanticUI.yaml #http://purl.org/biodiv/semanticUI#
+
+#OWLImports:
+#  - prefix: ui
+#    uri: http://purl.org/biodiv/semanticUI#
+#    file: SemanticUI.rdf
+
+map:
+  Provider: http://dbpedia.org/ontology/Provider
+  PhysicalPlant: http://dbpedia.org/resource/PhysicalPlant
+
+# rdf:type
+
+#
+# Properties:
+#     Relacionam as coisas na ontologia
+#     Dica:
+#     type: Functional - quer dizer que algo só pode ter a propriedade
+#     uma vez: Katia hasCPF 89999999999999 (hasCPF é functional porque
+#     cada pessoa só pode ter um CPF
+#
+
+description:
+  subPropertyOf: AnnotationProperty
+  label:
+    - description @en
+    - descrição @pt
+
+relevance:
+  subPropertyOf: AnnotationProperty
+  domain: Indicator
+  label: [relevance @en, relevância @pt]
+
+title:
+  subPropertyOf: AnnotationProperty
+  label: [título @pt, title @en]
+  range: Literal
+
+hasSugarcaneSource:
+  subPropertyOf: ObjectProperty
+  label:
+    - Tem origem da cana @pt
+    - has sugarcane source @en
+  functional: true
+  range: SugarcaneSourceCategory
+
+hasAvailabilityOfEvaluationResults:
+  subPropertyOf: ObjectProperty
+  label:
+    - has availability of evaluations results @en
+    - Tem disponibilização dos resultados da avaliação @pt
+  functional: true
+  range: AvailabilityOfEvaluationResultsCategory
+
+hasFinishOfPlantingDate:
+  subPropertyOf: DataProperty
+  label:
+    - has finish of planting date @en
+    - Tem data de término do plantio @pt
+  functional: true
+  range: date
+
+hasTotalValuePlaneedForInvestmentToProductionDrainage:
+  subPropertyOf: DataProperty
+  functional: true
+  label:
+    - has total value planed for investment to production drainage @en
+    - Valor total previsto para investimento para escoamento da produção @pt
+  range: real
+
+#
+# Classes = conceitos
+# Dica:
+# is_a: Feature - indica a classe pai do conceito, nesse caso
+# o conceito é um tipo de Feature do que está sendo analisado.
+#
+# Um conceito depois de uma propriedade, indica que a propriedade só
+# póde ter valores desse conceito:
+# value: Categorical - indica que a propriedade value só pode ter como
+# valores categorias (ex: Acima de 100 ou Tem tratamento). No Sustenagro,
+# todos os indicadores só podem ter valores de categorias.
+#
+
+Indicator:
+  is_a: Feature
+  label: [Indicador @pt, Indicator @en]
+  value: Categorical
+
+# Descendentes de Indicator
+
+EfficiencyIndicator:
+  is_a: Indicator
+  label:
+    - Efficiency Indicator @en
+    - Indicador de eficiência @pt
+
+SustainabilityIndicator:
+  is_a: Indicator
+  label:
+    - Sustainability Indicator @en
+    - Indicador de sustentabilidade @pt
+
+# Descendentes de EfficiencyIndicator
+
+ProductionEfficiencyFeature:
+  is_a: EfficiencyIndicator
+  label:
+    - Production efficiency @en
+    - Eficiência da produção @pt
+
+TechnologicalEfficiencyFeature:
+  is_a: EfficiencyIndicator
+  label:
+    - Technological efficiency @en
+    - Eficiência tecnológica @pt
+  hasWeight:
+    - label: [Indireta @pt, Indirect @en]
+      asNumber: 1.0
+    - label: [Nula @pt, Null @en]
+      asNumber: 0.0
+    - label: [Direct @en, Direta @pt]
+      asNumber: 2.0
+
+# Descendentes de SustainabilityIndicator
+
+EconomicIndicator:
+  is_a: SustainabilityIndicator
+  label:
+    - Economic indicator @en
+    - Indicador econômico @pt
+
+EnvironmentalIndicator:
+  is_a: SustainabilityIndicator
+  label:
+    - Indicador ambiental @pt
+    - Environmental indicator @en
+
+SocialIndicator:
+  is_a: SustainabilityIndicator
+  label:
+    - Social indicator @en
+    - Indicador social @pt
+
+# Descendentes de ProductionEfficiencyFeature
+
+Logistic:
+  is_a: ProductionEfficiencyFeature
+  label: [Logistic @en, Logística @pt]
+
+MarketVariable:
+  is_a: ProductionEfficiencyFeature
+  label:
+    - Variável de mercado @pt
+    - Market variable @en
+
+PoliticalVariable:
+  is_a: ProductionEfficiencyFeature
+  label:
+    - Political variable @en
+    - Variável política @pt
+
+SugarcaneQuality:
+  is_a: ProductionEfficiencyFeature
+  label:
+    - Qualidade da cana-de-açucar @pt
+    - Sugarcane quality @en
+
+# Descendentes de TechnologicalEfficiencyFeature
+
+TechnologicalEfficiencyInTheField:
+  is_a: TechnologicalEfficiencyFeature
+  label:
+    - Technological efficiency in the field @en
+    - Eficiência tecnológica no campo @pt
+
+TechnologicalEfficiencyInTheIndustrial:
+  is_a: TechnologicalEfficiencyFeature
+  label:
+    - Technological efficiency in the industry @en
+    - Eficiência tecnológica na industrial @pt
+
+# Descendentes de EconomicIndicator
+
+CostAttribute:
+  is_a: EconomicIndicator
+  label:
+    - Atributo de custo @pt
+    - Cost attribute @en
+
+EnergyAttribute:
+  is_a: EconomicIndicator
+  label:
+    - Atributo de energia @pt
+    - Energy attribute @en
+
+IndustrialUnityAttribute:
+  is_a: EconomicIndicator
+  label:
+    - Atributo unidade industrial @pt
+    - Industrial unity attribute @en
+
+InvestmentsAttribute:
+  is_a: EconomicIndicator
+  label:
+    - Atributo de investimentos @pt
+    - Investments attribute @en
+
+ProductivityAttribute:
+  is_a: EconomicIndicator
+  label:
+    - Atributo de produtividade @pt
+    - Productivity attribute @en
+
+SubProductsAttribute:
+  is_a: EconomicIndicator
+  label:
+    - Subproducts attribute @en
+    - Atributo subprodutos @pt
+
+# Descendentes de EnvironmentalIndicator
+
+AtmosphereAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Atributo atmosfera @pt
+    - Atmosphere attribute @en
+
+BiodiversityAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Biodiversity attribute @en
+    - Atributo biodiversidade @pt
+
+GeneralAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Atributo geral @pt
+    - General attribute @en
+
+HarvestAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Harvest attribute @en
+    - Atributo colheita @pt
+
+PlantingAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Atributo de plantio @pt
+    - Planting attribute @en
+
+SoilsAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Atributo solos @pt
+    - Soils attribute @en
+
+WaterAttribute:
+  is_a: EnvironmentalIndicator
+  label:
+    - Atributo água @pt
+    - Water attribute @en
+
+# Descendentes de SocialIndicator
+
+HealthAttribute:
+  is_a: SocialIndicator
+  label:
+    - Atributo de saúde @pt
+    - Health attribute @en
+
+JobsAttribute:
+  is_a: SocialIndicator
+  label:
+    - Atributo de trabalho @pt
+    - Jobs attribute @en
+
+RegulatoryAttendanceAttribute:
+  is_a: SocialIndicator
+  label:
+    - Regulatory attendance attribute @en
+    - Atributo de atendimento normativo @pt
+
+SafetyAttribute:
+  is_a: SocialIndicator
+  label:
+    - Safety attribute @en
+    - Atributo de segurança @pt
+
+TrainingAttribute:
+  is_a: SocialIndicator
+  label:
+    - Training attribute @en
+    - Atributo de treinamento @pt
+
+#
+# Daqui em diante não coloquei em ordem
+#
+
+PhysicalPlant:
+  is_a: ProductionUnit
+  label: [Usina @pt, Plant @en]
+
+ExistNo:
+  is_a: Boolean
+  label: [Exist/No exist @en,
+          Existe/Não existe @pt]
+
+YesNo:
+  is_a: Boolean
+  label: [Yes/No @en, Sim/Não @pt]
+
+VinasseUse:
+  is_a: TechnologicalEfficiencyInTheField
+  label: [Uso da vinhaça @pt,
+          Vinasse use @en]
+  value:
+    - label:
+        - Appropriate disposal @en
+        - Descarte adequado @pt
+      asNumber: 0.0
+    - label:
+        - Inappropriate disposal @en
+        - Descarte inadequado @pt
+      asNumber: -1.0
+    - label:
+        - Emprego para fertirrigação / Biogás @pt
+        - Employment for fertigation / Biogas @en
+      asNumber: 1.0
+
+CircuitClosing:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Circuit closing @en
+    - Fechamento do circuito @pt
+  value:
+    - label:
+        - Open circuit @en
+        - Circuito aberto @pt
+      asNumber: -1.0
+    - label:
+        - Circuito parcialmente fechado @pt
+        - Partially closed circuit @en
+      asNumber: 1.0
+    - label:
+        - Closed circuit @en
+        - Circuito fechado @pt
+      asNumber: 2.0
+
+ReformAndOrRotationCropForTheNextHarvest:
+  is_a: ProductivityAttribute
+  label:
+    - Reform and / or rotation crop for the next harvest @en
+    - Reforma e/ou rotação de cultura para a próxima safra @pt
+  relevance: 2.0
+  value: YesNo
+
+ProtectionPlanAndConservationOfRemainingAreas-Protected:
+  is_a: BiodiversityAttribute
+  label:
+    - Plano de proteção e conservação de áreas remanescentes/protegidas (Áreas de Proteção Permanente, Reserva Legal) @pt
+    - Protection plan and conservation of remaining areas / protected (Permanent Protection Areas, Legal Reserve) @en
+  relevance: 2.0
+  value: YesNo
+
+ReductionInWaterConsumption:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Redução de consumo de água @pt
+    - Reduction in water consumption @en
+  value:
+    - label: [Limpeza com água e reutilização da água @pt,
+              Cleaning with water and water reuse @en]
+      asNumber: 1.0
+    - label: [Limpeza com água sem reutilização @pt,
+              Cleaning with water without reuse @en]
+      asNumber: -1.0
+    - label: [Limpeza da cana a seco @pt,
+              Dry cleaning of sugarcane @en]
+      asNumber: 2.0
+
+InvestmentRatioMachinesVersusProductionReturnOnAssets:
+  is_a: CostAttribute
+  label:
+    - Relação entre investimento de máquinas versus produção de cana e retorno do imobilizado @pt
+    - Investment relationship between machines versus sugarcane production and return on assets @en
+  relevance: 2.0
+  value:
+    - label: [Positive @en, Positivo @pt]
+      asNumber: 1.0
+    - label: [Negative @en, Negativo @pt]
+      asNumber: -1.0
+
+LogisticsProximity:
+  is_a: Logistic
+  label:
+    - Logistic proximity of the sugarcane planting area to the plant (up to 50 Km away) @en
+    - Proximidade logística da área de plantio da cana em relação a usina (até 50 Km de distância) @pt
+  value:
+    - label:
+        - Menor ou igual a 50 km @pt
+        - Equal or lowest of 50 km @en
+      asNumber: 2.0
+    - label: [Maior 50 km @pt, Higher of 50 km @en]
+      asNumber: -1.0
+
+UseOfMoreResistantStrainsToTheEthanolConcentration:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Use of more resistant strains to the ethanol concentration @en
+    - Utilização de cepas mais resistentes a concentração do etanol @pt
+  value:
+    - label: No @en Não @pt
+    - label: Yes @en Sim @pt
+
+CropPlanning:
+  is_a: ProductivityAttribute
+  label:
+    - Planejamento de safra @pt
+    - Crop planning @en
+  relevance: 2.0
+  value: YesNo
+
+FulfillmentOfLaborLaws:
+  is_a: RegulatoryAttendanceAttribute
+  label:
+    - Cumprimento das leis trabalhistas de acordo com a Lei N°5.889/73* acrescida da Lei N° 11.718/2008* que tratam das relações de trabalho no setor rural. @pt
+    - Fulfillment of labor laws in accordance with law 5.889/73 plus the law 11.718/2008 that deal with labor relations in the rural sector. @en
+  relevance: 2.0
+  value: YesNo
+
+ElectricityProduction:
+  label:
+    - Electricity production @en
+    - Produção de energia elétrica @pt
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  value:
+    - label: [No @en, Não @pt]
+      asNumber: 0.0
+    - label:
+        - Produz para consumo e venda @pt
+        - Production for consumption and sale @en
+      asNumber: 2.0
+    - label:
+        - Production for own consumption @en
+        - Produz para consumo próprio @pt
+      asNumber: 1.0
+
+UseOfAdequateTerracingToTheSoilSlopeAndHarvestMechanization:
+  is_a: SoilsAttribute
+  label:
+    - Use of terracing adequate to the soil slope and harvest mechanization @en
+    - Uso de terraceamento adequado a declividade do solo e mecanização da colheita @pt
+  relevance: 2.0
+  value: YesNo
+
+AccessToInternationalMarket:
+  is_a: MarketVariable
+  label:
+    - Access to the international market (function of the attendance to international certifications) @en
+    - Acesso ao mercado internacional (função do atendimento a certificações internacionais) @pt
+  value:
+    - label: [No @en, Não @pt]
+      asNumber: -1.0
+    - label: [Yes @en, Sim @pt]
+      asNumber: 3.0
+
+LogisticsPlanningOfTheFieldSucarcaneToThePlant:
+  is_a: ProductivityAttribute
+  label:
+    - Logistics planning of the field sugarcane to the plant @en
+    - Planejamento logístico da cana do campo para a usina @pt
+  relevance: 2.0
+  value: YesNo
+
+AgriculturalCuttingType:
+  is_a: TechnologicalEfficiencyInTheField
+  label:
+    - Tipo de corte agrícola @pt
+    - Agricultural cutting type @en
+  value:
+    - label: [Mechanized @en, Mecanizado @pt]
+      asNumber: 2.0
+    - label:
+        - Manual em áreas aptas a mecanização @pt
+        - Manual in suitable areas to mechanization @en
+      asNumber: -1.0
+    - label: [Manual @en, Manual @pt]
+      asNumber: 1.0
+
+PriceEqualizationPolicy:
+  is_a: TechnologicalEfficiencyInTheField
+  label:
+    - Price equalization policy (tanking and off season) @en
+    - Política de equalização de preços (tancagem e entre safra) @pt
+  value:
+    - label:
+        - Condicionada pela oferta @pt
+        - Conditioned by the offer @en
+      asNumber: 1.0
+    - label:
+        - Conditioned by demand @en
+        - Condicionada pela demanda (Desfavorável) @pt
+      asNumber: -1.0
+
+PlanToReplacementOfOldBoilersWithMoreEfficientBoilersForCogeneration:
+  is_a: EnergyAttribute
+  label:
+    - Plano de substituição das caldeiras antigas por caldeiras mais eficientes para cogeração de energia @pt
+    - Plan to replacement of old boilers with more efficient boilers for cogeneration @en
+  relevance: 2.0
+  value: YesNo
+
+SugarcaneTransportOptimizationForIndustry:
+  is_a: CostAttribute
+  label:
+    - Sugarcane transport optimization for industry @en
+    - Otimização do transporte da cana para a indústria @pt
+  relevance: 2.0
+  value: YesNo
+
+VinasseDestination:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Vinasse destination @en
+    - Destinação da vinhaca @pt
+  value:
+    - label:
+        - Containment tank for fertigation or Biodigestion for the production of electricity @en
+        - Tanque de contenção para fertirrigação ou de biodigestão para produção de energia elétrica @pt
+      asNumber: 1.0
+    - label:
+        - Vinasse disposal in the environment @en
+        - Descarte da vinhaça no ambiente @pt
+      asNumber: -1.0
+
+UseOfTechniquesForBiologicalPestControl:
+  is_a: GeneralAttribute
+  label:
+    - Use of techniques for biological pest control @en
+    - Emprego de técnicas para controle biológico de pragas @pt
+  relevance: 2.0
+  value:
+    - label: [Usa @pt, Use @en]
+      asNumber: 1.0
+    - label: [Não usa @pt, Not use @en]
+      asNumber: -1.0
+
+PricePoliciesAppliedToSector:
+  is_a: MarketVariable
+  label:
+    - Políticas de preço aplicadas ao setor (mínimo, financiamento de safra agrícola) @pt
+    - Price policies applied to the sector (agricultural harvest financing) @en
+  value:
+    - label: [Yes @en, Sim @pt]
+      asNumber: 1.0
+    - label: [No @en, Não @pt]
+      asNumber: 0.0
+
+UseOfFilterCakeWhichPartiallyReplacedMineralFertilizer:
+  is_a: SubProductsAttribute
+  label:
+    - Uso de torta de filtro em substituição parcial a adubação mineral @pt
+    - Use of filter cake which partially replaced mineral fertilizer @en
+  relevance: 2.0
+  value: YesNo
+
+BagasseAndStrawDestination:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Bagasse and straw destination for 2nd generation ethanol production @en
+    - Destinação do bagaço e palha para produção de etanol de 2nd geração @pt
+  value:
+    - label: [Yes @en, Sim @pt]
+    - label: [No @en, Não @pt]
+
+GovernmentSubsidy:
+  label:
+    - Government subsidy @en
+    - Subsídio do governo @pt
+  is_a: PoliticalVariable
+  value:
+    - label:
+        - Nascent business @en
+        - Empresa nascente @pt
+      asNumber: 1.0
+    - label:
+        - For the Sector @en
+        - Para o setor @pt
+      asNumber: 0.0
+
+ProducersOrPlantsOrganization:
+  is_a: TechnologicalEfficiencyInTheField
+  label:
+    - Organização de produtores ou de usinas @pt
+    - Producers or plants organization @en
+  value:
+    - label: [Yes @en, Sim @pt]
+      asNumber: 1.0
+    - label: [No @en, Não @pt]
+      asNumber: 0.0
+
+HarvestTypeUsed:
+  is_a: HarvestAttribute
+  label:
+    - Tipo de colheta utilizada (manual ou mecanizada) @pt
+    - Harvest type used (manual or mechanized) @en
+  relevance: 2.0
+  value:
+    - label: [Manual @en, Manual @pt]
+      asNumber: -2.0
+    - label: [Mechanized @en, Mecanizado @pt]
+      asNumber: 2.0
+    - label: [Semi-mechanized @en, Semimecanizado @pt]
+      asNumber: 0.0
+
+AttendanceOfRequirementsOfAdequateEquipmentUsageNorm31:
+  is_a: HealthAttribute
+  label:
+    - Atendimento de requisitos de uso de equipamento adequado para aplicação de agrotóxicos de acordo com a Norma Reguladora 31 @pt
+    - Attendance of requirements of adequate equipment usage for pesticide application according to regulatory norm 31 @en
+  relevance: 2.0
+  value: YesNo
+
+UseOfBurningInAreasWithLowerSlopeOf12:
+  is_a: HarvestAttribute
+  label:
+    - Uso de queima em áreas com declive inferior a 12% @pt
+    - Use of burning in areas with lower slope of 12% @en
+  relevance: 2.0
+  value: YesNo
+
+FiberValue:
+  label: [Valor da fibra @pt, Fiber value @en]
+  is_a: SugarcaneQuality
+  value:
+    - label: [Igual ou superior @pt, Equal or higher @en]
+      asNumber: 1.0
+    - label: [Lowest @en, Menor @pt]
+      asNumber: 0.0
+
+ComplianceWithRegulatoryNorm24:
+  is_a: HealthAttribute
+  label:
+    - Cumprimento a Norma Regulamentadora 24 que trata do bem-estar do trabalhador @pt
+    - Compliance with regulatory norm 24 which deals with employee welfare @en
+  relevance: 2.0
+  value: YesNo
+
+TrainingRoutineInWorkerSafety:
+  is_a: SafetyAttribute
+  label:
+    - Rotina de treinamento em segurança do trabalhador @pt
+    - Training routine in worker safety @en
+  relevance: 2.0
+  value: ExistNo
+
+ComplianceWithNationalCommitmentToAdequacyToGoodWorkingConditions:
+  is_a: PoliticalVariable
+  label:
+    - Atendimento ao compromisso nacional para adequação às boas condições de trabalho (NR's) @pt
+    - Compliance with the national commitment to good working conditions (NR's) @en
+  value:
+    - label: [Yes @en, Sim @pt]
+      asNumber: 2.0
+    - label: [No @en, Não @pt]
+      asNumber:  -2.0
+
+PlanningTheProductionEnvironmentInAccordanceWithAptitudePedologicalOrEdaphic:
+  is_a: SoilsAttribute
+  label:
+    - Planning the production environment in accordance with pedological or edaphic aptitude @en
+    - Planejamento do ambiente de produção segundo aptidão pedológica ou edáfica @pt
+  relevance: 2.0
+  value: YesNo
+
+MonitoringOfFlowOfSugarcane:
+  is_a: Logistic
+  label:
+    - Monitoramento do fluxo de carregamento e descarregamento da cana-de-açucar @pt
+    - Monitoring of sugarcane loading and unloading flow @en
+  value:
+    - label: [Yes @en, Sim @pt]
+      asNumber: 1.0
+    - label: [No @en, Não @pt]
+      asNumber: 0.0
+
+PlantingPlanConsideringThePrecursorUseOfArea:
+  is_a: SoilsAttribute
+  label:
+    - Planting plan considering the precursor use of area @en
+    - Plano de plantio considerando o uso precursor da área @pt
+  relevance: 2.0
+  value:
+    - label:
+        - Em substituição a áreas de matas nativas @pt
+        - In replacement of areas of native forests @en
+      asNumber: -2.0
+    - label:
+        - Em substituição a pasto @pt
+        - In replacement of pasture @en
+      asNumber: 2.0
+    - label:
+        - In replacement of degraded areas @en
+        - Em substituição a áreas degradadas @pt
+      asNumber: 3.0
+    - label:
+        - Em substituição a cana e culturas similares @pt
+        - In replacement of cane and similar cultures @en
+      asNumber: 1.0
+    - label:
+        - Em substituição a culturas alimentares @pt
+        - In replacement of food crops @en
+      asNumber: -1.0
+
+SugarcaneMechanization:
+  is_a: TechnologicalEfficiencyInTheField
+  label:
+    - Sugarcane mechanization @en
+    - Mecanização da cana @pt
+  value:
+    - label:
+        - Inadequada – aumento de custos de produção @pt
+        - Inappropiate - increase of production costs @en
+      asNumber: -1.0
+    - label:
+        - Adequada - com redução de perdas visíveis e invisíveis @pt
+        - Appropriate - with reduced visible and invisible losses @en
+      asNumber: 1.0
+
+ReducingWaterConsumptionInSugarcaneProcessing:
+  is_a: WaterAttribute
+  label:
+    - Redução do consumo de água no processamento da cana @pt
+    - Reducing water consumption in sugarcane processing @en
+  relevance: 3.0
+  value: YesNo
+
+RemunerationCompatibleWithAgreedMinimumWageBetweenUnionAndPlant:
+  is_a: JobsAttribute
+  label:
+    - Remuneration compatible with agreed minimum wage between trade union and plant @en
+    - Remuneração compatível com piso salarial acordado entre sindicato e usina @pt
+  relevance: 2.0
+  value: YesNo
+
+EmploymentFormalization:
+  is_a: JobsAttribute
+  label:
+    - Formalização de emprego @pt
+    - Employment formalization @en
+  relevance: 2.0
+  value:
+    - label:
+        - Menor que 79% @pt
+        - Lower than 79% @en
+      asNumber: -1.0
+    - label:
+        - Entre 80% e 90% @pt
+        - Between 80% and 90% @en
+      asNumber: 0.0
+    - label:
+        - Maior que 91% @pt
+        - Greater than 91% @en
+      asNumber: 1.0
+
+TotalRecoverableSugarIndex:
+  is_a: ProductivityAttribute
+  label: ATR index (total recoverable sugar) per ton of sugarcane @en
+         Índice de ATR (açúcares totais recuperáveis) por tonelada de cana-de-açucar @pt
+  relevance: 2.0
+  value:
+    - label:
+        - 140 a 145 kg @pt
+        - 140 to 145 kg @en
+      asNumber: 1.0
+    - label:
+        - 130 a 139 kg @pt
+        - 130 to 139 kg @en
+      asNumber: 0.0
+
+AgriculturalManagement:
+  label:
+    - Agricultural management @en
+    - Manejo agrícola @pt
+  is_a: TechnologicalEfficiencyInTheField
+  value:
+    - label:
+        - Preparation / Plantation / Manual Sugarcane Maintenance according to constraints of the size of the area and slope @en
+        - Preparo / plantio / manutenção do canavial manual em função de restrições do tamanho da área e declividade @pt
+      asNumber: 0.0
+    - label:
+        - Preparo / plantio / manutenção do canavial usando mecanização @pt
+        - Preparation / Plantation / Mechanized Maintenance of sugarcane field @en
+      asNumber: 1.0
+    - label:
+        - Preparation / Plantation / Manual maintenance of sugarcane field in suitable areas to mechanization @en
+        - Preparo / plantio / manutenção do canavial manual em áreas aptas a mecanização @pt
+      asNumber: -1.0
+    - label:
+        - Preparo / plantio / manutenção do canavial (automatizados ou empregando sistemas de informação? Por ex sensoriamento remoto ou agricultura de precisão) @pt
+        - Preparation / Plantation / Automated Or System Information Based Maintenance @en
+      asNumber: 2.0
+
+InitiativesOrActionsThatPromoteTheLocalCommunityWell-Being:
+  is_a: RegulatoryAttendanceAttribute
+  label:
+    - Iniciativas ou ações que promovam o bem-estar da comunidade local de acordo com as normas de Responsabilidade Social Empresarial (RSE) @pt
+    - Initiatives or actions that promote the local community well-being according to the standards of corporate social responsibility (CSR) @en
+  relevance: 2.0
+  value: YesNo
+
+ProductionAndReuseOfWaterFromSugarcaneProcessing:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Produção e reutilização de água a partir do processamento da cana-de-açucar @pt
+    - Production and reuse of water from sugarcane processing @en
+  value:
+    - label:
+        - Produz, reutiliza e devolve água para o ambiente @pt
+        - It produces, reuse and return water to environment @en
+      asNumber: 2.0
+    - label:
+        - Produz e reutilizá @pt
+        - It produces and reuse @en
+      asNumber: 1.0
+    - label:
+        - Produz água no processamento da cana, mas nao a reincorpora no processo @pt
+        - It produces water in sugarcane processing, but not reincorporate in the process @en
+      asNumber:  -1.0
+
+Varieties:
+  is_a: TechnologicalEfficiencyInTheField
+  label: [Varieties @en, Variedades@pt]
+  value:
+    - label:
+        - Variedades adaptadas @pt
+        - Adapted varieties @en
+      asNumber: 1.0
+    - label:
+        - Conventional varieties @en
+        - Variedades convencionais @pt
+      asNumber: 0.0
+    - label:
+        - Variedades adaptadas e resistentes @pt
+        - Adapted and resistant varieties @en
+      asNumber: 2.0
+
+FiltercakeAndAshesDestination:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Destinação de torta de filtro e cinza @pt
+    - Filtercake and ashes destination @en
+  value:
+    - label:
+        - Reuse in the field @en
+        - Reutilização no campo @pt
+      asNumber: 1.0
+    - label:
+        - Descarte Inadequado @pt
+        - Inadequate disposal @en
+      asNumber: -1.0
+
+PlantationPlanAccordingToTheRegionalFeatures:
+  is_a: PlantingAttribute
+  label:
+    - Plano de plantio de acordo com as caracteristícas regionais (ambiente de produção) @pt
+    - Plantation plan according to the regional features (production environment) @en
+  relevance: 2.0
+  value: YesNo
+
+AbsoluteEmissionsOfGreenhouseGases:
+  is_a: AtmosphereAttribute
+  label:
+    - Emissões absolutas de gases de efeito estufa (GEE) ou gases associados @pt
+    - Absolute emissions of greenhouse gases (GEE) or associated gases @en
+  relevance: 3.0
+  value:
+    - label:
+        - Atende aos valores determinados @pt
+        - Meets determined values @en
+      asNumber: 1.0
+    - label:
+        - Não atende @pt
+        - Does not meet @en
+      asNumber: -1.0
+
+AttendanceToLaw7802-1989:
+  is_a: SoilsAttribute
+  label:
+    - Attendance to Law No. 7.802 / 1989 which provides for the transport, storage, marketing, waste disposal and pesticide packaging and the like. @en
+    - Atendimento a Lei n°7.802/1989 que dispõe sobre o transporte, armazenamento, comercialização, destino final dos resíduos e embalagens de agrotóxicos e afins. @pt
+  relevance: 2.0
+  value: YesNo
+
+AttendanceToSprayingRestriction:
+  is_a: GeneralAttribute
+  label:
+    - Atendimento à restrição da pulverização aérea para aplicação de maturadores (Instrução Normativa Conjunta 1/2012//DAS/MAPA) @pt
+    - Attendance to restriction on aerial spraying for applying maturing (Joint Normative Instruction 1/2012/DAS/MAPA) @en
+  relevance: 2.0
+  value: YesNo
+
+UsePrecursorOfTheArea:
+  is_a: PoliticalVariable
+  label:
+    - Uso precursor da área (solo) @pt
+    - Former use of the area (soil) @en
+  value:
+    - label:
+        - Em substituição a áreas degradadas @pt
+        - Replacing degraded areas @en
+      asNumber: 3.0
+    - label:
+        - Replacing areas of native forests @en
+        - Em substituição a áreas de matas nativas @pt
+      asNumber: -2.0
+    - label:
+        - Replacing pasture @en
+        - Em substituição a pasto @pt
+      asNumber: 2.0
+    - label:
+        - Replacing sugarcane and similar cultures @en
+        - Em substituição a cana-de-açucar e culturas similares @pt
+      asNumber: 1.0
+    - label:
+        - Em substituição a culturas alimentares @pt
+        - Replacing food crops @en
+      asNumber: -1.0
+
+ProductionUnit:
+  is_a: EvaluationObject
+  label: [Unidade produtiva @pt,
+          Production unit @en]
+  #hasName: Literal
+
+AdequateStructureForInstallationOrExpansionOfWaterReuse:
+  is_a: WaterAttribute
+  label:
+    - Estrutura adequada para instalação ou ampliação do reuso da água (circuito fechado) @pt
+    - Adequate structure for installation or expansion of water reuse (closed circuit) @en
+  relevance: 3.0
+  value: YesNo
+
+RenewalOfAreaWithSugarcaneUsingRotationWithFoodCrops:
+  is_a: PlantingAttribute
+  label:
+    - Renewal of area with sugarcane using rotation with food crops @en
+    - Renovação da área com cana utilizando rotação com culturas alimentares @pt
+  relevance: 3.0
+  value: YesNo
+
+RawMaterialDiversificationWithImprovedInputs:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Diversificação da matéria prima com insumos melhorados @pt
+    - Raw material diversification with improved inputs @en
+  value:
+    - label:
+        - Use of sugarcane / biomass for plant dedicated the electricity production @en
+        - Uso de cana energia / biomassa para usina voltada a produção de energia elétrica @pt
+      asNumber: 1.0
+    - label:
+        - Uso de cana com mais sacarose para produção açúcar @pt
+        - Use of sugarcane with more sucrose for sugar production @en
+      asNumber: 2.0
+
+UsesOrInvestestInMoreResistantYeast:
+  is_a: IndustrialUnityAttribute
+  label:
+    - Uses or invests in more resistant yeast for better efficiency in ethanol production @en
+    - Utiliza ou investe em leveduras mais resistentes para melhor eficiência na produção de etanol @pt
+  relevance: 2.0
+  value: YesNo
+
+ItOwnOrGrantsForWaterCatchmentAccordingToCurrentRegulations:
+  is_a: WaterAttribute
+  label:
+    - It own or grants for water catchment according to current regulations @en
+    - Possui ou outorga para captação de água segundo a norma vigente @pt
+  relevance: 2.0
+  value: YesNo
+
+ReuseOfStrawComingFromTheHarvestForGroundCover:
+  is_a: SoilsAttribute
+  label:
+    - Reutilização da palhada ou palhiço oriundo da colheita para cobertura do solo @pt
+    - Reuse of straw coming from the harvest for ground cover @en
+  relevance: 2.0
+  value: YesNo
+
+PublicPoliciesForSector:
+  label:
+    - Public policies for the sector @en
+    - Políticas públicas para o setor @pt
+  is_a: PoliticalVariable
+  value:
+    - label:
+        - Formuladas sem considerar a realidade do campo ou do produtor @pt
+        - Formulated without considering the reality of the field or producer @en
+      asNumber: -1.0
+    - label:
+        - Direcionada para inovação com redução de custo @pt
+        - Directed to innovation with cost reduction @en
+      asNumber: 1.0
+
+AgriculturalPlanningObservingManagementTechniquesPlantingAndHarvestingSeasons:
+  is_a: ProductivityAttribute
+  label:
+    - Agricultural planning observing management techniques and planting and harvesting seasons @en
+    - Planejamento agrícola observando as técnicas de manejo e épocas de plantio e colheita @pt
+  relevance: 2.0
+  value: YesNo
+
+PresenceOfInnovationsInTheField:
+  label:
+    - Presença de inovações no campo @pt
+    - Presence of innovations in the field @en
+  is_a: TechnologicalEfficiencyInTheField
+  value:
+    - label:
+        - Adhesion and use of innovations @en
+        - Adesão e uso das Inovações @pt
+      asNumber: 1.0
+    - label:
+        - Difficulty of adhesion and use of innovations @en
+        - Dificuldade de adesão e uso das Inovações @pt
+      asNumber: 0.0
+
+TrafficControl:
+  is_a: HarvestAttribute
+  label: [Controle de tráfego @pt,
+          Traffic control @en]
+  relevance: 2.0
+  value: YesNo
+
+ProductivityOfSugarcanePerHectare:
+  label:
+    - Produtividade de cana-de-açucar por hectare @pt
+    - Productivity of sugarcane per hectare @en
+  relevance: 2.0
+  is_a: ProductivityAttribute
+  value:
+    - label:
+      - Lower than 64 Tn/Ha @en
+      - Menor que 64 Ton/ha @pt
+      asNumber: -2.0
+    - label:
+      - 85 Ton/ha @pt
+      - 85 Tn/ha @en
+      asNumber: 1.0
+    - label:
+      - Greater than 85 Tn/ha @en
+      - Maior que 85 Ton/ha @pt
+      asNumber: 2.0
+    - label:
+      - 81-75 Ton/ha @pt
+      - 81-75 Tn/ha @en
+      asNumber: 0.0
+    - label:
+      - 74-64 Tn/ha @en
+      - 74-64 Ton/ha @pt
+      asNumber: -1.0
+
+
+UseOfVinasseToFertigation:
+  is_a: SubProductsAttribute
+  label:
+    - Uso da vinhaça para fertirrigação (em substituição parcial a adubação mineral) @pt
+    - Use of vinasse to fertigation (which partially replaced mineral fertilizer) @en
+  relevance: 2.0
+  value:
+    - label: [Uso parcial @pt,
+              Partial usage @en]
+      asNumber: 0.0
+    - label: [Não usa @pt,
+              Do not use @en]
+      asNumber: -1.0
+    - label: [Total usage @en,
+              Uso total @pt]
+      asNumber: 1.0
+
+ComplianceWithAgriculturalAndEconomicZoning:
+  is_a: PoliticalVariable
+  label:
+    - Atendimento ao zoneamento agrícola e econômico (ZAE) @pt
+    - Compliance with agricultural and economic zoning (AEZ) @en
+  value:
+    - label: [No @en, Não @pt]
+      asNumber: -2.0
+    - label: [Yes @en, Sim @pt]
+      asNumber:  2.0
+
+Provider:
+  is_a: ProductionUnit
+  label: [Provider @en, Fornecedor @pt]
+
+SugarcaneValueInATR:
+  is_a: SugarcaneQuality
+  label: [Sugarcane value in ATR @en,
+          Valor da cana em ATR @pt]
+  value:
+    - label: [Lowest @en, Menor @pt]
+      asNumber: -1.0
+    - label: [Igual ou superior @pt,
+              Equal or higher @en]
+      asNumber: 2.0
+
+GradualReplacementOfDieselUseByRenewableFuelInTheFleet:
+  is_a: EnergyAttribute
+  label:
+    - Substituição gradativa do uso de diesel por combustível renovável na frota @pt
+    - Gradual replacement of diesel use by renewable fuel in the fleet @en
+  relevance: 2.0
+  value: YesNo
+
+SharingOfRisksBetweenSuppliersAndProductionPlant:
+  is_a: ProductivityAttribute
+  label:
+    - Compartilhamento dos riscos de produção entre fornecedores e usina @pt
+    - Sharing of risks between suppliers and production plant @en
+  relevance: 2.0
+  value: YesNo
+
+AtmosphericPollutantsEmission:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Emissão de poluentes atmosféricos @pt
+    - Atmospheric pollutants emission @en
+  value:
+    - label:
+      - Use of systems reducing emissions @en
+      - Emprego de sistemas redutores de emissões de gases @pt
+      asNumber: 1.0
+    - label:
+      - Não emprega nenhuma técnica de redução de gases @pt
+      - Does not use gas reduction technique @en
+      asNumber: -1.0
+
+SugarcanePlanting:
+  is_a: TechnologicalEfficiencyInTheField
+  label:
+    - Plantio de cana @pt
+    - Sugarcane planting @en
+  value:
+    - label: [With seedling @en, Com muda @pt]
+      asNumber: 1.0
+    - label: [Muda Pré-brotada (MPB) @pt,
+              Pre-budded seedling @en]
+      asNumber: 2.0
+    - label: [Comercial @pt, Commercial @en]
+      asNumber: 0.0
+
+AdequateDestinationOfVinasse:
+  is_a: GeneralAttribute
+  label:
+    - Adequada destinação da vinhaça @pt
+    - Adequate destination of vinasse @en
+  relevance: 2.0
+  value: YesNo
+
+
+PlantationTypeUsed:
+  is_a: PlantingAttribute
+  label:
+    - Plantation type used @en
+    - Tipo de plantio utilizado @pt
+  relevance: 2.0
+  value:
+    - label: [Mechanized @en, Mecanizado @pt]
+      asNumber: 2.0
+    - label: [Semimechanized @en, Semimecanizado @pt]
+      asNumber: 0.0
+    - label: [Manual @en, Manual @pt]
+      asNumber: -2.0
+
+BiofuelInfrastructureAvailable:
+  is_a: IndustrialUnityAttribute
+  label:
+    - Infrastructure available for the production of second and third generation biofuels @en
+    - Infraestrutura disponível para produção de biocombustíveis de segunda e terceira geração @pt
+  relevance: 2.0
+  value: YesNo
+
+UseOfBurningInAreasWithHigherSlopeOf12:
+  is_a: HarvestAttribute
+  label:
+    - Use of burning in areas with slope higher than 12% @en
+    - Uso de queima em áreas com declive acima de 12% @pt
+  relevance: 2.0
+  value: YesNo
+
+AdequacyOfBoilers:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label: [Adequação das caldeiras @pt, Adequacy of boilers @en]
+  value:
+    - label:
+      - Less efficient boilers (low pressure) @en
+      - Caldeiras menos eficientes (de baixa pressão) @pt
+      asNumber: -1.0
+    - label:
+      - Caldeiras mais eficientes (novas e com maior pressão) @pt
+      - More efficient boilers (new and high pressure) @en
+      asNumber: 1.0
+
+EmissionControlnAccordanceWithResolutions:
+  is_a: AtmosphereAttribute
+  label:
+    - Emission control in accordance with resolutions CONAMA 382/2006 and 436/2011 @en
+    - Controle de emissões de acordo com as resoluções CONAMA 382/2006 e 436/2011 @pt
+  relevance: 3.0
+  value: YesNo
+
+ProductionEvaluationBasedOnMarketDecision:
+  is_a: ProductivityAttribute
+  label:
+    - Production evaluation (Ethanol / Sugar / Bioelectricity) based on market-decision and / or prices @en
+    - Avaliação da produção (etanol/açúcar/bioeletricidade) com base na decisão de mercado e/ou preços @pt
+  relevance: 2.0
+  value: YesNo
+
+BagasseDestination:
+  is_a: TechnologicalEfficiencyInTheIndustrial
+  label: [Destinação do bagaço @pt, Bagasse destination @en]
+  value:
+    - label:
+      - Improper disposal of bagasse @en
+      - Descarte inadequado do bagaço @pt
+      asNumber: -1.0
+    - label:
+      - Use or sale of bagasse to produce electricity @en
+      - Emprego ou venda do bagaço para produção de energia elétrica @pt
+      asNumber: 1.0
+
+AccessToInternalMarket:
+  is_a: MarketVariable
+  label:
+    - Access to the internal market (function of incentives and/or public policy) @en
+    - Acesso ao mercado interno (função de incentivos e/ou políticas públicas) @pt
+  value:
+    - label: [No @en, Não @pt]
+      asNumber: -1.0
+    - label: [Yes @en, Sim @pt]
+      asNumber: 3.0
+
+BufferStocks:
+  is_a: CostAttribute
+  label:
+    - Have fuel stocks in order to regulate supply  / demand and prices of ethanol (buffer stocks) @en
+    - Ter estoques de combustível de modo a regular oferta/demanda do etanol e preços (estoques reguladores) @pt
+  relevance: 2.0
+  value: YesNo
+
+PlanningOfHarvestFront:
+  is_a: Logistic
+  label:
+    - Planejamento da frente de colheita (maquinário) @pt
+    - Planning of harvest front (machinery) @en
+  value:
+    - label: [No @en, Não @pt]
+      asNumber: 0.0
+    - label:
+      - Yes without considering the size of the area @en
+      - Sim sem considerar o tamanho da área @pt
+      asNumber: 1.0
+    - label:
+      - Yes with adaptation to the zise of the area @en
+      - Sim com adequação ao tamanho da área @pt
+      asNumber: 2.0
+
+UseOfAdequateVarietyToTheClimateAndSoilConditions:
+  is_a: PlantingAttribute
+  label:
+    - Use of adequate variety to the climate and soil conditions @en
+    - Emprego de variedade adequada às condições de clima e solo @pt
+  relevance: 3.0
+  value: YesNo
+
+RationalUseOfInputs:
+  is_a: PlantingAttribute
+  label:
+    - Rational use of inputs @en
+    - Uso racional de insumos @pt
+  relevance: 2.0
+  value: YesNo
+
+EmploymentOfAdequateIrrigationToWaterUsePolicy:
+  is_a: WaterAttribute
+  label:
+    - Employment of adequate irrigation to water use policy @en
+    - Emprego de irrigação adequado a política de uso da água @pt
+  relevance: 2.0
+  value: YesNo
+
+VinasseConcentration:
+  is_a:  TechnologicalEfficiencyInTheIndustrial
+  label:
+    - Concentração da vinhaça @pt
+    - Vinasse concentration @en
+  value:
+    - label:
+      - Por evaporação empregando energia elétrica @pt
+      - By evaporation using electricity @en
+      asNumber: -1.0
+    - label:
+      - Concentração tradicional empregando biotecnologia (Utilização das cepas mais resistentes) @pt
+      - Traditional concentration employing biotechnology @en
+      asNumber: 1.0
+
+InvestmentsInNewTechnologiesAndIndustrialProcessesWhichContributeACleanerAndSustainableProduction:
+  is_a: InvestmentsAttribute
+  label:
+    - Investments in new technologies and industrial processes which contribute a cleaner and sustainable production @en
+    - Investimentos em novas tecnologias e processos industriais que favoreçam uma produção mais limpa e sustentável @pt
+  relevance: 2.0
+  value: YesNo
+
+UseOfCakeFIlterInTheOrganicManureInAreaWithSugarcane:
+  is_a: SoilsAttribute
+  label:
+    - Uso de torta de filtro na adubação orgânica em área com cana (plantio, soca, reforma) @pt
+    - Use of cake fIlter in the organic manure in area with sugarcane @en
+  relevance: 2.0
+  value: YesNo
+
+UseOfTechniquesOfGreenManure:
+  is_a: SoilsAttribute
+  label:
+    - Use of techniques of green manure @en
+    - Emprego de técnicas de adubação verde @pt
+  relevance: 2.0
+  value: YesNo
+
+PlanToExpandProductionViaImprovedProductivity:
+  is_a: ProductivityAttribute
+  label:
+    - Plano de expansão da produção via melhoria da produtividade @pt
+    - Plan to expand production via improved productivity @en
+  relevance: 2.0
+  value: YesNo
+
+ComplianceWithCurrentEnvironmentalLegislation:
+  is_a: BiodiversityAttribute
+  label:
+    - Cumprimento da Legislação ambiental vigente @pt
+    - Compliance with current environmental legislation @en
+  relevance: 2.0
+  value: YesNo
+
+ComplianceToStateEnvironmentalProtocols:
+  is_a: PoliticalVariable
+  label:
+    - Atendimento a protocolos ambientais estaduais @pt
+    - Compliance with state environmental protocols @en
+  value:
+    - label: [No @en, Não @pt]
+      asNumber: -2.0
+    - label: [Yes @en, Sim @pt]
+      asNumber: 2.0
+
+ExistenceOfTrainingProgramsAndTrainingToWorkers:
+  is_a: TrainingAttribute
+  label:
+    - Existence of training programs and training to workers @en
+    - Existência de programas de capacitação e treinamento ao trabalhador @pt
+  relevance: 2.0
+  value: ExistNo
+
+ElectricityProductionForOwnConsumptionAndExport:
+  is_a: EnergyAttribute
+  label:
+    - Bioelectricity production for own consumption and export @en
+    - Produção de bioeletricidade para consumo próprio e exportação @pt
+  relevance: 3.0
+  value:
+    - label:
+      - Does not supply the auto-demand or is partial @en
+      - Não supre a própria demanda ou esta é parcial @pt
+      asNumber: -1.0
+    - label:
+      - Supre totalmente e comercializa o excedente @pt
+      - Supplies fully and market the surplus @en
+      asNumber: 1.0
+    - label:
+      - Supre totalmente a própria demanda @pt
+      - Supplies fully his own demand @en
+      asNumber: 0.0
+
+NaturalRecoveryAndInducedAreas:
+  is_a: BiodiversityAttribute
+  label:
+    - Áreas em recuperação natural e induzida (reflorestamento) @pt
+    - Natural recovery and induced areas (reforestation) @en
+  relevance: 2.0
+  value: YesNo
+
+ComplianceWithAgriculturalAndEconomicZoning:
+  is_a: PoliticalVariable
+  label:
+    - Compliance with agricultural and economic zoning (AEZ) @en
+    - Atendimento ao zoneamento agrícola e econômico (ZAE) @pt
+  value:
+    - label: [Yes @en, Sim @pt]
+      asNumber: 2.0
+    - label: [No @en, Não @pt]
+      asNumber: -2.0
+
+SugarcaneTransportOptimizationForIndustry:
+  is_a: CostAttribute
+  label:
+    - Sugarcane transport optimization for industry @en
+    - Otimização do transporte da cana de açucar para a indústria @pt
+  relevance: 2.0
+  value: YesNo
+
+#
+# Constantes
+#
+
+DontExist:
+  type: ExistNo
+  label: [Doesn't Exist @en, Não Existe @pt]
+  asNumber: -1.0
+
+Exist:
+  type: ExistNo
+  label: [Exist @en, Existe @pt]
+  asNumber: 1.0
+
+YesValue:
+  type: YesNo
+  label: [Yes @en, Sim @pt]
+  asNumber: 1.0
+
+NoValue:
+  type: YesNo
+  label: [No @en, Não @pt]
+  asNumber: -1.0
