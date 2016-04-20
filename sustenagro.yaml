@@ -337,16 +337,16 @@ VinasseUse:
           Vinasse use @en]
   value:
     - label:
-        - Appropriate disposal @en
-        - Descarte adequado @pt
+      - Appropriate disposal @en
+      - Descarte adequado @pt
       asNumber: 0.0
     - label:
-        - Inappropriate disposal @en
-        - Descarte inadequado @pt
+      - Inappropriate disposal @en
+      - Descarte inadequado @pt
       asNumber: -1.0
     - label:
-        - Emprego para fertirrigação / Biogás @pt
-        - Employment for fertigation / Biogas @en
+      - Emprego para fertirrigação / Biogás @pt
+      - Employment for fertigation / Biogas @en
       asNumber: 1.0
 
 CircuitClosing:
@@ -356,16 +356,16 @@ CircuitClosing:
     - Fechamento do circuito @pt
   value:
     - label:
-        - Open circuit @en
-        - Circuito aberto @pt
+      - Open circuit @en
+      - Circuito aberto @pt
       asNumber: -1.0
     - label:
-        - Circuito parcialmente fechado @pt
-        - Partially closed circuit @en
+      - Circuito parcialmente fechado @pt
+      - Partially closed circuit @en
       asNumber: 1.0
     - label:
-        - Closed circuit @en
-        - Circuito fechado @pt
+      - Closed circuit @en
+      - Circuito fechado @pt
       asNumber: 2.0
 
 ReformAndOrRotationCropForTheNextHarvest:
@@ -419,8 +419,8 @@ LogisticsProximity:
     - Proximidade logística da área de plantio da cana em relação a usina (até 50 Km de distância) @pt
   value:
     - label:
-        - Menor ou igual a 50 km @pt
-        - Equal or lowest of 50 km @en
+      - Menor ou igual a 50 km @pt
+      - Equal or lowest of 50 km @en
       asNumber: 2.0
     - label: [Maior 50 km @pt, Higher of 50 km @en]
       asNumber: -1.0
@@ -459,12 +459,12 @@ ElectricityProduction:
     - label: [No @en, Não @pt]
       asNumber: 0.0
     - label:
-        - Produz para consumo e venda @pt
-        - Production for consumption and sale @en
+      - Produz para consumo e venda @pt
+      - Production for consumption and sale @en
       asNumber: 2.0
     - label:
-        - Production for own consumption @en
-        - Produz para consumo próprio @pt
+      - Production for own consumption @en
+      - Produz para consumo próprio @pt
       asNumber: 1.0
 
 UseOfAdequateTerracingToTheSoilSlopeAndHarvestMechanization:
@@ -503,8 +503,8 @@ AgriculturalCuttingType:
     - label: [Mechanized @en, Mecanizado @pt]
       asNumber: 2.0
     - label:
-        - Manual em áreas aptas a mecanização @pt
-        - Manual in suitable areas to mechanization @en
+      - Manual em áreas aptas a mecanização @pt
+      - Manual in suitable areas to mechanization @en
       asNumber: -1.0
     - label: [Manual @en, Manual @pt]
       asNumber: 1.0
@@ -516,12 +516,12 @@ PriceEqualizationPolicy:
     - Política de equalização de preços (tancagem e entre safra) @pt
   value:
     - label:
-        - Condicionada pela oferta @pt
-        - Conditioned by the offer @en
+      - Condicionada pela oferta @pt
+      - Conditioned by the offer @en
       asNumber: 1.0
     - label:
-        - Conditioned by demand @en
-        - Condicionada pela demanda (Desfavorável) @pt
+      - Conditioned by demand @en
+      - Condicionada pela demanda (Desfavorável) @pt
       asNumber: -1.0
 
 PlanToReplacementOfOldBoilersWithMoreEfficientBoilersForCogeneration:
@@ -547,12 +547,12 @@ VinasseDestination:
     - Destinação da vinhaca @pt
   value:
     - label:
-        - Containment tank for fertigation or Biodigestion for the production of electricity @en
-        - Tanque de contenção para fertirrigação ou de biodigestão para produção de energia elétrica @pt
+      - Containment tank for fertigation or Biodigestion for the production of electricity @en
+      - Tanque de contenção para fertirrigação ou de biodigestão para produção de energia elétrica @pt
       asNumber: 1.0
     - label:
-        - Vinasse disposal in the environment @en
-        - Descarte da vinhaça no ambiente @pt
+      - Vinasse disposal in the environment @en
+      - Descarte da vinhaça no ambiente @pt
       asNumber: -1.0
 
 UseOfTechniquesForBiologicalPestControl:
@@ -602,12 +602,12 @@ GovernmentSubsidy:
   is_a: PoliticalVariable
   value:
     - label:
-        - Nascent business @en
-        - Empresa nascente @pt
+      - Nascent business @en
+      - Empresa nascente @pt
       asNumber: 1.0
     - label:
-        - For the Sector @en
-        - Para o setor @pt
+      - For the Sector @en
+      - Para o setor @pt
       asNumber: 0.0
 
 ProducersOrPlantsOrganization:
@@ -714,24 +714,24 @@ PlantingPlanConsideringThePrecursorUseOfArea:
   relevance: 2.0
   value:
     - label:
-        - Em substituição a áreas de matas nativas @pt
-        - In replacement of areas of native forests @en
+      - Em substituição a áreas de matas nativas @pt
+      - In replacement of areas of native forests @en
       asNumber: -2.0
     - label:
-        - Em substituição a pasto @pt
-        - In replacement of pasture @en
+      - Em substituição a pasto @pt
+      - In replacement of pasture @en
       asNumber: 2.0
     - label:
-        - In replacement of degraded areas @en
-        - Em substituição a áreas degradadas @pt
+      - In replacement of degraded areas @en
+      - Em substituição a áreas degradadas @pt
       asNumber: 3.0
     - label:
-        - Em substituição a cana e culturas similares @pt
-        - In replacement of cane and similar cultures @en
+      - Em substituição a cana e culturas similares @pt
+      - In replacement of cane and similar cultures @en
       asNumber: 1.0
     - label:
-        - Em substituição a culturas alimentares @pt
-        - In replacement of food crops @en
+      - Em substituição a culturas alimentares @pt
+      - In replacement of food crops @en
       asNumber: -1.0
 
 SugarcaneMechanization:
@@ -741,12 +741,12 @@ SugarcaneMechanization:
     - Mecanização da cana @pt
   value:
     - label:
-        - Inadequada – aumento de custos de produção @pt
-        - Inappropiate - increase of production costs @en
+      - Inadequada – aumento de custos de produção @pt
+      - Inappropiate - increase of production costs @en
       asNumber: -1.0
     - label:
-        - Adequada - com redução de perdas visíveis e invisíveis @pt
-        - Appropriate - with reduced visible and invisible losses @en
+      - Adequada - com redução de perdas visíveis e invisíveis @pt
+      - Appropriate - with reduced visible and invisible losses @en
       asNumber: 1.0
 
 ReducingWaterConsumptionInSugarcaneProcessing:
@@ -773,16 +773,16 @@ EmploymentFormalization:
   relevance: 2.0
   value:
     - label:
-        - Menor que 79% @pt
-        - Lower than 79% @en
+      - Menor que 79% @pt
+      - Lower than 79% @en
       asNumber: -1.0
     - label:
-        - Entre 80% e 90% @pt
-        - Between 80% and 90% @en
+      - Entre 80% e 90% @pt
+      - Between 80% and 90% @en
       asNumber: 0.0
     - label:
-        - Maior que 91% @pt
-        - Greater than 91% @en
+      - Maior que 91% @pt
+      - Greater than 91% @en
       asNumber: 1.0
 
 TotalRecoverableSugarIndex:
@@ -792,12 +792,12 @@ TotalRecoverableSugarIndex:
   relevance: 2.0
   value:
     - label:
-        - 140 a 145 kg @pt
-        - 140 to 145 kg @en
+      - 140 a 145 kg @pt
+      - 140 to 145 kg @en
       asNumber: 1.0
     - label:
-        - 130 a 139 kg @pt
-        - 130 to 139 kg @en
+      - 130 a 139 kg @pt
+      - 130 to 139 kg @en
       asNumber: 0.0
 
 AgriculturalManagement:
@@ -807,20 +807,20 @@ AgriculturalManagement:
   is_a: TechnologicalEfficiencyInTheField
   value:
     - label:
-        - Preparation / Plantation / Manual Sugarcane Maintenance according to constraints of the size of the area and slope @en
-        - Preparo / plantio / manutenção do canavial manual em função de restrições do tamanho da área e declividade @pt
+      - Preparation / Plantation / Manual Sugarcane Maintenance according to constraints of the size of the area and slope @en
+      - Preparo / plantio / manutenção do canavial manual em função de restrições do tamanho da área e declividade @pt
       asNumber: 0.0
     - label:
-        - Preparo / plantio / manutenção do canavial usando mecanização @pt
-        - Preparation / Plantation / Mechanized Maintenance of sugarcane field @en
+      - Preparo / plantio / manutenção do canavial usando mecanização @pt
+      - Preparation / Plantation / Mechanized Maintenance of sugarcane field @en
       asNumber: 1.0
     - label:
-        - Preparation / Plantation / Manual maintenance of sugarcane field in suitable areas to mechanization @en
-        - Preparo / plantio / manutenção do canavial manual em áreas aptas a mecanização @pt
+      - Preparation / Plantation / Manual maintenance of sugarcane field in suitable areas to mechanization @en
+      - Preparo / plantio / manutenção do canavial manual em áreas aptas a mecanização @pt
       asNumber: -1.0
     - label:
-        - Preparo / plantio / manutenção do canavial (automatizados ou empregando sistemas de informação? Por ex sensoriamento remoto ou agricultura de precisão) @pt
-        - Preparation / Plantation / Automated Or System Information Based Maintenance @en
+      - Preparo / plantio / manutenção do canavial (automatizados ou empregando sistemas de informação? Por ex sensoriamento remoto ou agricultura de precisão) @pt
+      - Preparation / Plantation / Automated Or System Information Based Maintenance @en
       asNumber: 2.0
 
 InitiativesOrActionsThatPromoteTheLocalCommunityWell-Being:
@@ -838,16 +838,16 @@ ProductionAndReuseOfWaterFromSugarcaneProcessing:
     - Production and reuse of water from sugarcane processing @en
   value:
     - label:
-        - Produz, reutiliza e devolve água para o ambiente @pt
-        - It produces, reuse and return water to environment @en
+      - Produz, reutiliza e devolve água para o ambiente @pt
+      - It produces, reuse and return water to environment @en
       asNumber: 2.0
     - label:
-        - Produz e reutilizá @pt
-        - It produces and reuse @en
+      - Produz e reutilizá @pt
+      - It produces and reuse @en
       asNumber: 1.0
     - label:
-        - Produz água no processamento da cana, mas nao a reincorpora no processo @pt
-        - It produces water in sugarcane processing, but not reincorporate in the process @en
+      - Produz água no processamento da cana, mas nao a reincorpora no processo @pt
+      - It produces water in sugarcane processing, but not reincorporate in the process @en
       asNumber:  -1.0
 
 Varieties:
@@ -855,16 +855,16 @@ Varieties:
   label: [Varieties @en, Variedades@pt]
   value:
     - label:
-        - Variedades adaptadas @pt
-        - Adapted varieties @en
+      - Variedades adaptadas @pt
+      - Adapted varieties @en
       asNumber: 1.0
     - label:
-        - Conventional varieties @en
-        - Variedades convencionais @pt
+      - Conventional varieties @en
+      - Variedades convencionais @pt
       asNumber: 0.0
     - label:
-        - Variedades adaptadas e resistentes @pt
-        - Adapted and resistant varieties @en
+      - Variedades adaptadas e resistentes @pt
+      - Adapted and resistant varieties @en
       asNumber: 2.0
 
 FiltercakeAndAshesDestination:
@@ -874,12 +874,12 @@ FiltercakeAndAshesDestination:
     - Filtercake and ashes destination @en
   value:
     - label:
-        - Reuse in the field @en
-        - Reutilização no campo @pt
+      - Reuse in the field @en
+      - Reutilização no campo @pt
       asNumber: 1.0
     - label:
-        - Descarte Inadequado @pt
-        - Inadequate disposal @en
+      - Descarte Inadequado @pt
+      - Inadequate disposal @en
       asNumber: -1.0
 
 PlantationPlanAccordingToTheRegionalFeatures:
@@ -898,12 +898,12 @@ AbsoluteEmissionsOfGreenhouseGases:
   relevance: 3.0
   value:
     - label:
-        - Atende aos valores determinados @pt
-        - Meets determined values @en
+      - Atende aos valores determinados @pt
+      - Meets determined values @en
       asNumber: 1.0
     - label:
-        - Não atende @pt
-        - Does not meet @en
+      - Não atende @pt
+      - Does not meet @en
       asNumber: -1.0
 
 AttendanceToLaw7802-1989:
@@ -929,24 +929,24 @@ UsePrecursorOfTheArea:
     - Former use of the area (soil) @en
   value:
     - label:
-        - Em substituição a áreas degradadas @pt
-        - Replacing degraded areas @en
+      - Em substituição a áreas degradadas @pt
+      - Replacing degraded areas @en
       asNumber: 3.0
     - label:
-        - Replacing areas of native forests @en
-        - Em substituição a áreas de matas nativas @pt
+      - Replacing areas of native forests @en
+      - Em substituição a áreas de matas nativas @pt
       asNumber: -2.0
     - label:
-        - Replacing pasture @en
-        - Em substituição a pasto @pt
+      - Replacing pasture @en
+      - Em substituição a pasto @pt
       asNumber: 2.0
     - label:
-        - Replacing sugarcane and similar cultures @en
-        - Em substituição a cana-de-açucar e culturas similares @pt
+      - Replacing sugarcane and similar cultures @en
+      - Em substituição a cana-de-açucar e culturas similares @pt
       asNumber: 1.0
     - label:
-        - Em substituição a culturas alimentares @pt
-        - Replacing food crops @en
+      - Em substituição a culturas alimentares @pt
+      - Replacing food crops @en
       asNumber: -1.0
 
 ProductionUnit:
@@ -978,12 +978,12 @@ RawMaterialDiversificationWithImprovedInputs:
     - Raw material diversification with improved inputs @en
   value:
     - label:
-        - Use of sugarcane / biomass for plant dedicated the electricity production @en
-        - Uso de cana energia / biomassa para usina voltada a produção de energia elétrica @pt
+      - Use of sugarcane / biomass for plant dedicated the electricity production @en
+      - Uso de cana energia / biomassa para usina voltada a produção de energia elétrica @pt
       asNumber: 1.0
     - label:
-        - Uso de cana com mais sacarose para produção açúcar @pt
-        - Use of sugarcane with more sucrose for sugar production @en
+      - Uso de cana com mais sacarose para produção açúcar @pt
+      - Use of sugarcane with more sucrose for sugar production @en
       asNumber: 2.0
 
 UsesOrInvestestInMoreResistantYeast:
@@ -1017,12 +1017,12 @@ PublicPoliciesForSector:
   is_a: PoliticalVariable
   value:
     - label:
-        - Formuladas sem considerar a realidade do campo ou do produtor @pt
-        - Formulated without considering the reality of the field or producer @en
+      - Formuladas sem considerar a realidade do campo ou do produtor @pt
+      - Formulated without considering the reality of the field or producer @en
       asNumber: -1.0
     - label:
-        - Direcionada para inovação com redução de custo @pt
-        - Directed to innovation with cost reduction @en
+      - Direcionada para inovação com redução de custo @pt
+      - Directed to innovation with cost reduction @en
       asNumber: 1.0
 
 AgriculturalPlanningObservingManagementTechniquesPlantingAndHarvestingSeasons:
@@ -1040,12 +1040,12 @@ PresenceOfInnovationsInTheField:
   is_a: TechnologicalEfficiencyInTheField
   value:
     - label:
-        - Adhesion and use of innovations @en
-        - Adesão e uso das Inovações @pt
+      - Adhesion and use of innovations @en
+      - Adesão e uso das Inovações @pt
       asNumber: 1.0
     - label:
-        - Difficulty of adhesion and use of innovations @en
-        - Dificuldade de adesão e uso das Inovações @pt
+      - Difficulty of adhesion and use of innovations @en
+      - Dificuldade de adesão e uso das Inovações @pt
       asNumber: 0.0
 
 TrafficControl:

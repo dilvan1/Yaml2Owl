@@ -196,7 +196,7 @@ class Yaml2Owl {
 
         def indiv = id ? getEntity(id, EntityType.NAMED_INDIVIDUAL) : factory.getOWLAnonymousIndividual()
 
-        ind.keySet().forEach {
+        ind.keySet().each {
             if (it == 'type'){
                 def cls = getEntity(ind['type'])
                 manager.addAxiom(onto, factory.getOWLClassAssertionAxiom(cls, indiv))
@@ -209,7 +209,7 @@ class Yaml2Owl {
             }
             if (prop.OWLDataProperty)
                 if (ind[it] in Collection)
-                    ind[it].forEach{
+                    ind[it].each{
                         manager.addAxiom(onto, factory.getOWLDataPropertyAssertionAxiom(prop, indiv, makeLiteral(it)))
                     }
                 else
@@ -217,7 +217,7 @@ class Yaml2Owl {
 
             else if (prop.OWLObjectProperty)
                 if (ind[it] in Collection)
-                    ind[it].forEach{
+                    ind[it].each{
                         manager.addAxiom(onto, factory.getOWLObjectPropertyAssertionAxiom(prop, indiv, individual(it)))
                     }
                 else
@@ -280,14 +280,14 @@ class Yaml2Owl {
     @TypeChecked(SKIP)
     def addAnnotation(Map ind, entity){
 
-        ind.keySet().forEach {
+        ind.keySet().each {
             def prop = getEntity(it)
 
             //println "Entity: $it"
             if (!prop || !prop.OWLAnnotationProperty) return
 
             if (ind[it] in Collection) {
-                ind[it].forEach{
+                ind[it].each{
                     annotate(entity, prop, it)
                 }
             } else
@@ -356,13 +356,13 @@ class Yaml2Owl {
     @TypeChecked(SKIP)
     def readYaml2(Map yaml) {
 
-        yaml.keySet().forEach{ key ->
+        yaml.keySet().each{ key ->
 
             if (key == 'ontology')
                 return
 
             if (key == 'prefix') {
-                yaml[key].keySet().forEach{
+                yaml[key].keySet().each{
                     //println "$it --> ${yaml[key][it]}"
                     prefix.setPrefix(it+':', yaml[key][it])
                 }
@@ -370,7 +370,7 @@ class Yaml2Owl {
             }
 
             if (key == 'includes') {
-                yaml[key].forEach {
+                yaml[key].each {
                     println "Reading $it ontology ..."
 
                     def yaml2 = new Yaml().load(new FileReader(it))
@@ -383,7 +383,7 @@ class Yaml2Owl {
 
 
             if (key == 'imports') {
-                yaml[key].forEach {
+                yaml[key].each {
                     println "Reading ${it.file} ontology ..."
 
                     def yaml2 = new Yaml().load(new FileReader(it.file))
@@ -397,7 +397,7 @@ class Yaml2Owl {
                 return
             }
             if (key == 'OWLImports') {
-                yaml[key].forEach {
+                yaml[key].each {
                     importOnt(it.uri, it.file)
                     prefix.setPrefix(it.prefix+':', it.uri)
                 }
@@ -479,7 +479,7 @@ class Yaml2Owl {
                 } else{
                     manager.addAxiom(onto, factory.getOWLDeclarationAxiom(getEntity(key, EntityType.CLASS)));
                 }
-                yaml[key].keySet().forEach{
+                yaml[key].keySet().each{
                     if (it == 'is_a') return
                     def prop = getEntity(it)
                     def value = yaml[key][it]
@@ -520,9 +520,9 @@ class Yaml2Owl {
             }
             //println "Key $key: ${yaml[key]}"
         }
-        yaml.keySet().forEach { key ->
+        yaml.keySet().each { key ->
             if (key == 'addFrom') {
-                yaml[key].forEach { cmd ->
+                yaml[key].each { cmd ->
                     // SPARQL 1.0 or 1.1 endpoint
                     def sparql = new Sparql(endpoint: cmd.endpoint) //, user:"user", pass:"pass")
 

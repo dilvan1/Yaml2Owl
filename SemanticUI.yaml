@@ -245,12 +245,12 @@ Place:
 TrueVal:
   type: Boolean
   label: [Verdadeiro @pt, True @en]
-  hasDataValue: 1.0
+  asNumber: 1.0
 
 FalseVal:
   type: Boolean
   label: [False @en, Falso @pt]
-  hasDataValue: -1.0
+  asNumber: -1.0
 
 Brazil:
   type: Country
